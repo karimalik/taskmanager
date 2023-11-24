@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { env } from 'process';
 import { sequelize } from './config/db';
+import taskRoutes from './routes/taskRoutes';
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -11,11 +12,13 @@ sequelize.sync().then(() => {
 });
 
 app.use(express.json());
+app.use('tasks', taskRoutes);
 
 //default route
 app.get('/', (req: Request, res: Response) => {
-    res.status(200).json({ message: 'Hello world' });
+    res.send('Hello world');
 });
+
 
 // Start server
 app.listen(port, () => {

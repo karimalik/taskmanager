@@ -72,6 +72,12 @@ export const updateTask = async (req: Request, res: Response): Promise<void> => 
 }
 
 
+/**
+ * delete specific instance in storage
+ * @author karimalik <karimkompissi@gmail.com>
+ * @param req 
+ * @param res 
+ */
 export const deleteTask = async (req: Request, res: Response): Promise<void> => {
     const taskId = parseInt(req.params.id);
 

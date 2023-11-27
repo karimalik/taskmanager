@@ -2,8 +2,12 @@ import { Request, Response } from 'express';
 import Task from '../models/Task';
 
 
-
-//get all tasks
+/**
+ * get all task in storage
+ * @author karimalik <karimkompissi@gmail.com>
+ * @param req 
+ * @param res 
+ */
 export const getTasks = async (req: Request, res: Response): Promise<void> => {
     try {
         const tasks = await Task.findAll();
@@ -14,10 +18,15 @@ export const getTasks = async (req: Request, res: Response): Promise<void> => {
     } catch (error) {
         res.status(500).json({ message: "Internal Server Error", error });
     }
-}
+};
 
 
-//create new tasks
+/**
+ * create new instance in storage
+ * @author karimalik <karimkompissi@gmail.com>
+ * @param req 
+ * @param res 
+ */
 export const createTask = async (req: Request, res: Response): Promise<void> => {
 
     const { title } = req.body;
@@ -30,4 +39,37 @@ export const createTask = async (req: Request, res: Response): Promise<void> => 
     } catch (error) {
         res.status(500).json({ message: "Internal Server Error", error });
     }
+};
+
+/**
+ * update specific instance in storage
+ * @author karimalik <karimkompissi@gmail.com>
+ * @param req 
+ * @param res 
+ */
+export const updateTask = async (req: Request, res: Response): Promise<void> => {
+    const taskId = parseInt(req.params.id);
+
+    try {
+        const task = await Task.findByPk(taskId);
+
+        if (task) {
+            await task.update({
+                title: req.body.title || task.title,
+                completed: req.body.completed !== undefined ? req.body.completed : task.completed,
+            });
+
+            res.status(200).json({
+                message: "Task has been updated successfully",
+                task
+            });
+        } else {
+            res.status(404).json({ message: "Task not found" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Internal Server Error", error });
+    }
 }
+
+
+// export const deleteTask = async (req: Request, res: Response)

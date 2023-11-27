@@ -1,5 +1,4 @@
 import express, { Request, Response } from 'express';
-import { env } from 'process';
 import { sequelize } from './config/db';
 import taskRoutes from './routes/taskRoutes';
 

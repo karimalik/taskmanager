@@ -72,4 +72,19 @@ export const updateTask = async (req: Request, res: Response): Promise<void> => 
 }
 
 
-// export const deleteTask = async (req: Request, res: Response)
+export const deleteTask = async (req: Request, res: Response): Promise<void> => {
+    const taskId = parseInt(req.params.id);
+
+    try {
+        const task = await Task.findByPk(taskId);
+        if (task) {
+            await task.destroy();
+
+            res.status(200).json({ message: "Task has been deleted successfully !" });
+        } else {
+            res.status(404).json({ message: "Task not found!" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+}

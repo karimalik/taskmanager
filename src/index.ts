@@ -30,7 +30,7 @@ const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Use task routes
-app.use('tasks', taskRoutes);
+app.use('/tasks', taskRoutes);
 
 //default route
 app.get('/', (req: Request, res: Response) => {

@@ -39,11 +39,8 @@ router.get('/', taskController.getTasks);
  *             properties:
  *               title:
  *                 type: string
- *               completed:
- *                  type: boolean      
  *             example:
  *               title: Task 1
- *               completed: true
  *     responses:
  *       200:
  *         description: Successful response

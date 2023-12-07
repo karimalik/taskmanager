@@ -22,7 +22,7 @@ Task.init(
         completed: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
-            defaultValue: false
+            defaultValue: true
         }
 
     },

@@ -19,12 +19,12 @@ const swaggerOptions = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Your API Title',
+            title: 'Task Manger API',
             version: '1.0.0',
-            description: 'Your API Description',
+            description: 'Task Manager API',
         },
     },
-    apis: ['./routes/*.ts'], // Specify the path to your route files
+    apis: ['./src/routes/*.ts'], // Specify the path to your route files
 };
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));

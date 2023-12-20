@@ -2,7 +2,7 @@
 
 Task manager using [Nodejs](https://nodejs.org/) and [Typescript](https://www.typescriptlang.org/)
 
-#Installation
+# Installation
 
 
 1. Make sure you have NodeJS installed. if you don't have it :
